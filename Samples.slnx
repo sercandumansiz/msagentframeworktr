@@ -1,3 +1,7 @@
 <Solution>
+  <Folder Name="/02-AGUI/">
+    <Project Path="02-AGUI/AGUISample-Client/AGUISample-Client.csproj" />
+    <Project Path="02-AGUI/AGUISample-Server/AGUISample-Server.csproj" />
+  </Folder>
   <Project Path="01-DEVUI/01-DEVUI.csproj" />
 </Solution>

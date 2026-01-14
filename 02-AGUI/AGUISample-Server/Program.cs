@@ -1,6 +1,5 @@
 using System.ClientModel;
-using Microsoft.Agents.AI.DevUI;
-using Microsoft.Agents.AI.Hosting;
+using Microsoft.Agents.AI.Hosting.AGUI.AspNetCore;
 using Microsoft.Extensions.AI;
 using OpenAI;
 
@@ -19,18 +18,14 @@ var openAIClientOptions = new OpenAIClientOptions
 var openAIClient = new OpenAIClient(new ApiKeyCredential(githubToken), openAIClientOptions);
 var chatClient = openAIClient.GetChatClient(githubModel).AsIChatClient();
 
-builder.AddAIAgent("AIAgent name", "AIAgent instructions", chatClient);
+var agent = chatClient.CreateAIAgent(
+    name: "AGUISampleAgent", 
+    instructions: "AGUISampleAgent Instructions");
 
-builder.AddOpenAIConversations();
-builder.AddOpenAIResponses();
-
-builder.AddDevUI();
+builder.Services.AddAGUI();
 
 var app = builder.Build();
 
-app.MapOpenAIConversations();
-app.MapOpenAIResponses();
-
-app.MapDevUI();
+app.MapAGUI("/agui", agent);
 
 app.Run();
