@@ -5,7 +5,6 @@ using OpenAI;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuration'dan GitHub ayarlarını oku
 var githubToken = builder.Configuration["GitHub:Token"]!;
 var githubEndpoint = builder.Configuration["GitHub:Endpoint"]!;
 var githubModel = builder.Configuration["GitHub:Model"]!;
